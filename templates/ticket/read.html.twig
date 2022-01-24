@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ticket{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="container">
+           <div class="row justify-content-center">
+              <div class="col-5 mt-4">
+                 <div class="card-body">
+                   <div class="col-12">
+                    <h2> Ticket de {{ticket.sender.username}}</h2>
+                   <div class="card text-dark bg-info mb-3" style="max-width: 18rem;">
+                     <div class="card-header">
+                        <p>{{ticket.createdAt|date }}</p></div>
+                     <div class="card-body">
+                        <p class="card-text">Sujet : {{ticket.title}}</p>
+                     </div>
+                     <div class="card-footer bg-transparent border-success">{{ticket.Message}}</div>
+                     </div>
+                         <a href="{{path("received")}}"class="btn btn-primary">Retour</a>
+                         <a href="{{path("send")}}" data-reply data-id="{{ticket.id}}" class="btn btn-primary">Repondre</a>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </div>
+</div> 
+
+{% block javascripts %}
+
+<script>
+window.onload=()=> {
+   document.queryselectorall(" [data-reply] ").forEach(element=> {
+      element.addEventlistener("click",function() {
+         document.querselector("recepient_id").value=this.dataset.id;
+      })
+   })
+}
+{% endblock %}
+{% endblock %}
+

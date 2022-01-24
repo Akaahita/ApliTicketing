@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ticket{% endblock %}
+
+{% block body %}
+
+<div class="row justify-content-center">
+   <div class="col-10 mt-4">
+        <div class="card-header card mt-4">
+                  <div class="card-body">
+                    <nav id="sidebarMenu" class="col-md- col-lg- d-md-block bg-light sidebar collapse">
+                            <div class="d-grid gap-2 d-md-block">
+                                <a href="{{path("received")}}"class="btn btn-primary">Boîte de Réception</a>
+                                <a href="{{path("sent")}}"class="btn btn-primary">Élément Envoyés</a>
+                            </div>
+                        </nav>
+
+                        <div class="row justify-content-center">
+                            <div class="col-5 mt-4">
+                                 <div class="card-body">
+                                   <h1>Resume des Tickets</h1>
+                                    <p>Tickets Reçus :{{ app.user.received|length }} </p>
+                                    <p>Tickets Envoyes :{{ app.user.sent|length }} </p>
+                                </div>
+                                 <a href="{{path("send")}}"class="btn btn-primary">ouvrir un Ticket</a>
+                       </div>
+                  </div>
+              </div>        
+          </div>
+     </div>
+</div>  
+
+
+{% endblock %}
